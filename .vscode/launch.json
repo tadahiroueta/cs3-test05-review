@@ -2,12 +2,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Attempt",
+            "request": "launch",
+            "mainClass": "Attempt",
+            "projectName": "my-app"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "com.mycompany.app.App",
+            "mainClass": "Try",
             "args": "",
             "projectName": "my-app"
         }
