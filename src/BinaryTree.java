@@ -61,4 +61,47 @@ public class BinaryTree<T>
 		
 		return root;
 	}
+
+	public void save(String filename) {
+		try {
+			PrintWriter out = new PrintWriter(new File(filename));
+			save(out, overallRoot);
+			out.close();
+		} catch (IOException e) {
+			System.out.println("Error saving file: " + e.getMessage());
+		}
+	}
+
+	private void save(PrintWriter out, Node<T> root) {
+		if (root == null) {
+			out.println("$");
+			return;
+		}
+
+		out.println(root.data);
+		save(out, root.left);
+		save(out, root.right);
+	}
+
+	public Node<String> load(String filename) {
+		try {
+			Scanner in = new Scanner(new File(filename));
+			Node<String> root = load(in);
+			in.close();
+			return root;
+		} 
+		catch (IOException e) { System.out.println("Error loading file: " + e.getMessage()); }
+
+		return null;
+	}
+
+	private Node<String> load(Scanner in) {
+		if (!in.hasNext()) return null;
+
+		Node<String> root = new Node<String>(in.next());
+		root.left = load(in);
+		root.right = load(in);
+
+		return root;
+	}
 }
